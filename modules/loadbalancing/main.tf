@@ -90,11 +90,6 @@ resource "aws_lb_target_group" "fabio_ui" {
   protocol = "TCP"
   vpc_id   = var.vpc.vpc_id
 
-  stickiness {
-    type = "lb_cookie"
-    enabled = false
-  }
-
   health_check {
     port = 4646
   }
@@ -121,11 +116,6 @@ resource "aws_lb_target_group" "fabio_lb" {
   protocol = "TCP"
   vpc_id   = var.vpc.vpc_id
 
-  stickiness {
-    type = "lb_cookie"
-    enabled = false
-  }
-
   tags = {
     ResourceGroup = var.namespace
   }
@@ -151,11 +141,6 @@ resource "aws_lb_target_group" "fabio_db" {
   port     = 27017
   protocol = "TCP"
   vpc_id   = var.vpc.vpc_id
-
-  stickiness {
-    type = "lb_cookie"
-    enabled = false
-  }
 
   tags = {
     ResourceGroup = var.namespace

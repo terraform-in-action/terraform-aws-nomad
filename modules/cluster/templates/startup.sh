@@ -114,7 +114,6 @@ if [[  ${nomad_mode} != "disabled" ]]; then
   installNomad ${nomad_version}
 fi
 
-
 if [[  ${nomad_mode} == "client" ]]; then
   installDocker
 fi
