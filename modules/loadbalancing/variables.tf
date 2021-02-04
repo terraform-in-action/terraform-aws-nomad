@@ -3,7 +3,7 @@ variable "namespace" {
 }
 
 variable "vpc" {
-    type = any
+  type = any
 }
 
 variable "sg" {

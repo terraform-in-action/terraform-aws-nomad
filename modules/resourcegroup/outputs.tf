@@ -1,3 +1,3 @@
 output "namespace" {
-    value = local.namespace
+  value = local.namespace
 }

@@ -11,7 +11,7 @@ locals {
     instance_count = var.instance_count,
     namespace      = var.namespace,
     datacenter     = var.datacenter,
-    join_wan       = join(",",[for s in var.join_wan: join("",["\"",s,"\""])]),
+    join_wan       = join(",", [for s in var.join_wan : join("", ["\"", s, "\""])]),
   }) : ""
   nomad_config = var.nomad.mode != "disabled" ? templatefile("${path.module}/templates/nomad_${var.nomad.mode}.hcl", {
     instance_count = var.instance_count
@@ -49,8 +49,8 @@ resource "aws_launch_template" "server" {
   }
   network_interfaces {
     associate_public_ip_address = var.associate_public_ips
-    security_groups = [var.security_group_id]
-    delete_on_termination = true
+    security_groups             = [var.security_group_id]
+    delete_on_termination       = true
   }
 
   tags = {
@@ -87,10 +87,10 @@ resource "aws_autoscaling_group" "server" {
 
 data "aws_instances" "instances" {
   depends_on = [aws_autoscaling_group.server]
-  count = var.associate_public_ips ? 1 : 0
+  count      = var.associate_public_ips ? 1 : 0
   instance_tags = {
     ResourceGroup = var.namespace
-    Name = local.namespace
+    Name          = local.namespace
   }
 
   instance_state_names = ["running", "pending"]

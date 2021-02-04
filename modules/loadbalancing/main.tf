@@ -78,9 +78,9 @@ resource "aws_lb_listener" "nomad_ui" {
 
 //fabio load balancer
 resource "aws_lb" "fabio_lb" {
-  name            = "${var.namespace}-fabio"
-  internal        = false
-  subnets         = var.vpc.public_subnets
+  name               = "${var.namespace}-fabio"
+  internal           = false
+  subnets            = var.vpc.public_subnets
   load_balancer_type = "network"
 }
 
@@ -93,7 +93,7 @@ resource "aws_lb_target_group" "fabio_ui" {
   health_check {
     port = 4646
   }
-  
+
   tags = {
     ResourceGroup = var.namespace
   }

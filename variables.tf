@@ -28,11 +28,6 @@ variable "nomad" {
   })
 }
 
-variable "region" {
-  default = "us-west-2"
-  type    = string
-}
-
 variable "namespace" {
   default = "terraforminaction"
   type    = string
@@ -55,5 +50,5 @@ variable "join_wan" {
 
 variable "associate_public_ips" {
   default = true
-  type = bool
+  type    = bool
 }
