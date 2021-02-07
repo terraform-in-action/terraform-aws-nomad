@@ -71,18 +71,18 @@ resource "aws_autoscaling_group" "server" {
     id      = aws_launch_template.server.id
     version = aws_launch_template.server.latest_version
   }
-  tags = [
-    {
-      key                 = "ResourceGroup"
-      value               = var.namespace
-      propagate_at_launch = true
-    },
-    {
-      key                 = "Name"
-      value               = local.namespace
-      propagate_at_launch = true
-    }
-  ]
+
+  tag {
+    key                 = "ResourceGroup"
+    value               = var.namespace
+    propagate_at_launch = true
+  }
+
+  tag {
+    key                 = "Name"
+    value               = local.namespace
+    propagate_at_launch = true
+  }
 }
 
 data "aws_instances" "instances" {
